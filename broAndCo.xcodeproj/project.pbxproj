@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD4C9C5126C19F4700FFE2F1 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C9C5026C19F4700FFE2F1 /* InviteViewController.swift */; };
+		CD4C9C5326C1D40300FFE2F1 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C9C5226C1D40300FFE2F1 /* CongratulationsViewController.swift */; };
+		CD7365A326C271EE0028025A /* CancelInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7365A226C271EE0028025A /* CancelInviteViewController.swift */; };
+		CD7365A526C286EC0028025A /* CancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7365A426C286EC0028025A /* CancelViewController.swift */; };
 		CD760F0926C13B6A0079B996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD760F0826C13B6A0079B996 /* AppDelegate.swift */; };
 		CD760F0B26C13B6A0079B996 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD760F0A26C13B6A0079B996 /* SceneDelegate.swift */; };
 		CD760F0D26C13B6A0079B996 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD760F0C26C13B6A0079B996 /* ViewController.swift */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD4C9C5026C19F4700FFE2F1 /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
+		CD4C9C5226C1D40300FFE2F1 /* CongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
+		CD7365A226C271EE0028025A /* CancelInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelInviteViewController.swift; sourceTree = "<group>"; };
+		CD7365A426C286EC0028025A /* CancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelViewController.swift; sourceTree = "<group>"; };
 		CD760F0526C13B6A0079B996 /* broAndCo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = broAndCo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD760F0826C13B6A0079B996 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD760F0A26C13B6A0079B996 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +67,10 @@
 				CD760F0826C13B6A0079B996 /* AppDelegate.swift */,
 				CD760F0A26C13B6A0079B996 /* SceneDelegate.swift */,
 				CD760F0C26C13B6A0079B996 /* ViewController.swift */,
+				CD4C9C5026C19F4700FFE2F1 /* InviteViewController.swift */,
+				CD7365A226C271EE0028025A /* CancelInviteViewController.swift */,
+				CD7365A426C286EC0028025A /* CancelViewController.swift */,
+				CD4C9C5226C1D40300FFE2F1 /* CongratulationsViewController.swift */,
 				CD760F0E26C13B6A0079B996 /* Main.storyboard */,
 				CD760F1126C13B6B0079B996 /* Assets.xcassets */,
 				CD760F1326C13B6B0079B996 /* LaunchScreen.storyboard */,
@@ -139,7 +151,11 @@
 			files = (
 				CD760F0D26C13B6A0079B996 /* ViewController.swift in Sources */,
 				CD760F0926C13B6A0079B996 /* AppDelegate.swift in Sources */,
+				CD7365A326C271EE0028025A /* CancelInviteViewController.swift in Sources */,
 				CD760F0B26C13B6A0079B996 /* SceneDelegate.swift in Sources */,
+				CD4C9C5326C1D40300FFE2F1 /* CongratulationsViewController.swift in Sources */,
+				CD7365A526C286EC0028025A /* CancelViewController.swift in Sources */,
+				CD4C9C5126C19F4700FFE2F1 /* InviteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

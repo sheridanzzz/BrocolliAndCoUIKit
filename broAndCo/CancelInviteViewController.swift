@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  CancelInviteViewController.swift
 //  broAndCo
 //
-//  Created by user201819 on 8/9/21.
+//  Created by user201819 on 8/10/21.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class CancelInviteViewController: UIViewController {
     
     let someImageView: UIImageView = {
         let theImageView = UIImageView()
@@ -18,25 +18,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.addSubview(someImageView) //This add it the view controller without constraints
+        view.addSubview(someImageView)
         someImageViewConstraints()
         buttonConstraints()
         nameConstraints()
         titleConstraints()
-    }
-    
-    @objc func buttonAction(sender: UIButton!) {
-        let rootVC = InviteViewController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+        // Do any additional setup after loading the view.
     }
     
     func buttonConstraints() {
         let button = UIButton(frame: CGRect(x: 200, y: 200, width: 100, height: 10))
         button.backgroundColor =  UIColor.systemGreen
-        button.setTitle(" Request Invite ", for: .normal)
+        button.setTitle(" Cancel Invite ", for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         button.layer.cornerRadius = button.frame.height / 2
         button.clipsToBounds = true
@@ -49,6 +42,25 @@ class ViewController: UIViewController {
         
         button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -200).isActive = true
+        
+    }
+    
+    func pressed()
+    {
+        let vc = CancelViewController()
+        vc.view.backgroundColor = .white
+        navigationController?.pushViewController(vc, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        let alert = UIAlertController(title: "Are you sure you want to delete this?", message: "Can't Undo", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            self.pressed()
+        }))
+        
+        self.present(alert, animated: true)
         
     }
     
@@ -100,4 +112,3 @@ class ViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
-
