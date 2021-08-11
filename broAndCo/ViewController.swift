@@ -9,34 +9,37 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //to check if the user has sent the invite prior
     var isLoggedin: Bool =  UserDefaults.standard.bool(forKey: "myLogin")
     
+    //image view loading the image on the screen
     let someImageView: UIImageView = {
         let theImageView = UIImageView()
-        theImageView.image = UIImage(named: "Brocoli_and_Co.png")
-        theImageView.translatesAutoresizingMaskIntoConstraints = false //You need to call this property so the image is added to your view
+        theImageView.image = UIImage(named: "Brocoli_and_Co.png") //image path
+        theImageView.translatesAutoresizingMaskIntoConstraints = false // the image is added to your view
         return theImageView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.addSubview(someImageView) //This add it the view controller without constraints
+        view.addSubview(someImageView)
         someImageViewConstraints()
         buttonConstraints()
         nameConstraints()
         titleConstraints()
     }
     
+    //if the user sent an invite before, move to this view
     func showCancelScreen() {
         DispatchQueue.main.async {
-        let vc = CancelViewController()
-        vc.view.backgroundColor = .white
+            let vc = CancelViewController()
+            vc.view.backgroundColor = .white
             self.navigationController?.pushViewController(vc, animated: true)
-        self.navigationItem.setHidesBackButton(true, animated: true)
+            self.navigationItem.setHidesBackButton(true, animated: true)
         }
     }
     
+    //on button press, the invite details view is shown
     @objc func buttonAction(sender: UIButton!) {
         let rootVC = InviteViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
@@ -44,25 +47,27 @@ class ViewController: UIViewController {
         present(navVC, animated: true)
     }
     
+    //Constraints for the button
     func buttonConstraints() {
         let button = UIButton(frame: CGRect(x: 200, y: 200, width: 100, height: 10))
-        button.backgroundColor =  UIColor.systemGreen
+        button.backgroundColor =  UIColor.systemGreen //button color
         button.setTitle(" Request Invite ", for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.layer.cornerRadius = button.frame.height / 2
+        button.layer.cornerRadius = button.frame.height / 2 //rounded corners on the button
         button.clipsToBounds = true
         button.tintColor = UIColor.white
         
         
-        self.view.addSubview(button)
+        self.view.addSubview(button)// add the button to the view, with constraints
         
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false //dont use autolayout constraints
         
-        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -200).isActive = true
+        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true //center the button on the x axis
+        button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -200).isActive = true //set a bottom anchor to the button
         
     }
     
+    //constraints for the name label
     func nameConstraints() {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         label.center = CGPoint(x: 160, y: 285)
@@ -73,9 +78,10 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -250).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -250).isActive = true // above the button
     }
     
+    // title label constraints
     func titleConstraints() {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         label.center = CGPoint(x: 160, y: 285)
@@ -88,15 +94,16 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        label.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
+        label.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true //set at the top of the view
     }
     
+    //image constraints
     func someImageViewConstraints() {
         someImageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
         someImageView.heightAnchor.constraint(equalToConstant: 350).isActive = true
         someImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        someImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 10).isActive = true
-        someImageView.contentMode = .scaleAspectFit
+        someImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 10).isActive = true //position the image in the center of the view
+        someImageView.contentMode = .scaleAspectFit //make the image scale to fit
     }
     
     override func viewWillAppear(_ animated: Bool) {

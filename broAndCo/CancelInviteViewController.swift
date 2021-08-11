@@ -12,7 +12,7 @@ class CancelInviteViewController: UIViewController {
     let someImageView: UIImageView = {
         let theImageView = UIImageView()
         theImageView.image = UIImage(named: "Brocoli_and_Co.png")
-        theImageView.translatesAutoresizingMaskIntoConstraints = false //You need to call this property so the image is added to your view
+        theImageView.translatesAutoresizingMaskIntoConstraints = false
         return theImageView
     }()
     
@@ -23,7 +23,6 @@ class CancelInviteViewController: UIViewController {
         buttonConstraints()
         nameConstraints()
         titleConstraints()
-        // Do any additional setup after loading the view.
     }
     
     func buttonConstraints() {
@@ -45,6 +44,7 @@ class CancelInviteViewController: UIViewController {
         
     }
     
+    //move to next view on button press
     func pressed()
     {
         let vc = CancelViewController()
@@ -53,6 +53,7 @@ class CancelInviteViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
+    //show an alert to confirm user action
     @objc func buttonAction(sender: UIButton!) {
         let alert = UIAlertController(title: "Are you sure you want to delete this?", message: "Can't Undo", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))

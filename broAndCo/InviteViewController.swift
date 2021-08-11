@@ -28,10 +28,13 @@ class InviteViewController: UIViewController, FormViewDelegate{
         super.viewDidLoad()
         title = "Invite Details"
         view.backgroundColor = .white
+        //configure all the view elements and contraints
         configureViews()
+        //bar button to dismiss the view
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissSelf))
     }
     
+    //dismiss the view on button tap
     @objc private func dismissSelf(){
         dismiss(animated: true, completion: nil)
     }
@@ -69,7 +72,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
     
     func configureFormView() {
         formView.delegate = self
-        formView.viewModel = formHelper
+        formView.viewModel = formHelper //configure the form using the model
         formView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(formView)
@@ -80,11 +83,12 @@ class InviteViewController: UIViewController, FormViewDelegate{
         let verticalMargins: CGFloat = 10
         let submitButtonMargins: CGFloat = 24
         
+        // all the UI elements have the correct constraints and are contrainted to each other
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalMargins * 3),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalMargins),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalMargins),
-            descriptionLabel.bottomAnchor.constraint(equalTo: formView.topAnchor, constant: -verticalMargins*4),
+            descriptionLabel.bottomAnchor.constraint(equalTo: formView.topAnchor, constant: -verticalMargins*4), //formview top anchor is contrainted to the bottom of the label
             
             formView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             formView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -97,7 +101,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
         ])
     }
     
-    
+    //on validation update the send button
     func updateSubmitButton(enabled: Bool) {
         let backgroundColor = enabled ? UIColor.dodgerBlue : UIColor.brightGray.withAlphaComponent(0.4)
         submitButton.backgroundColor = backgroundColor
@@ -110,6 +114,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
     
     @objc
     func submitButtonTapped(sender: UIButton!) {
+        //assisgn the values of the text fields to the variables
         formHelper.fields().forEach {
             if ($0.name == "NAME" )
             {
@@ -120,11 +125,13 @@ class InviteViewController: UIViewController, FormViewDelegate{
                 email = $0.value
             }
         }
+        //run the API call
         checkDetails(name: name, email: email) { (isSuccess) in
             print("done")
-         }
+        }
     }
     
+    //Post request function
     func checkDetails(name: String,  email: String, _ completion:@escaping (_ isSuccess:Bool)->Void) {
         
         let body: [String: Any] = ["name": name, "email": email]
@@ -157,6 +164,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
                         errMess = response1.errorMessage
                         completion(false)
                         isSuccess = false
+                        //display alert message on status 400
                         let alert = UIAlertController(title: "Error Message", message: errMess, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                         self.present(alert, animated: true)
@@ -165,6 +173,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
                     DispatchQueue.main.async {
                         completion(false)
                         isSuccess = true
+                        //no errors move to next view
                         let vc = CongratulationsViewController()
                         vc.view.backgroundColor = .white
                         self.navigationController?.pushViewController(vc, animated: true)
@@ -188,6 +197,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
         task.resume()
     }
     
+    //get the error message from the response
     struct Response: Decodable {
         let errorMessage: String
     }

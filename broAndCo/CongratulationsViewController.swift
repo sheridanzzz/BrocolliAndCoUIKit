@@ -10,23 +10,25 @@ import SwiftConfettiView
 
 class CongratulationsViewController: UIViewController {
     
+    //use the bool for user defaults
     var isLogggedin = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        //attach confetti view to the whole view
         let confettiView = SwiftConfettiView(frame: self.view.bounds)
         confettiView.intensity = 1
         confettiView.type = .star
-                confettiView.startConfetti()
+        confettiView.startConfetti()
         self.view.addSubview(confettiView)
         
+        //store the value in user defaults
         UserDefaults.standard.set(isLogggedin, forKey: "myLogin")
         
         emojiConstraints()
         labelConstraints()
         cancelButtonConstraints()
-        
     }
     
     func emojiConstraints() {
@@ -35,7 +37,6 @@ class CongratulationsViewController: UIViewController {
         label.text = "🥦"
         label.font = UIFont.systemFont(ofSize: 60.0)
         self.view.addSubview(label)
-        
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -67,7 +68,7 @@ class CongratulationsViewController: UIViewController {
         button.clipsToBounds = true
         button.tintColor = UIColor.white
         button.setTitleColor(.systemBlue, for: .normal)
-    
+        
         self.view.addSubview(button)
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +76,7 @@ class CongratulationsViewController: UIViewController {
         button.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 430).isActive = true
     }
     
+    //move to the next view on button press
     @objc func cancelAction(sender: UIButton!) {
         let vc = CancelInviteViewController()
         vc.view.backgroundColor = .white
@@ -84,14 +86,14 @@ class CongratulationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-    // Hide the Navigation Bar
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
-
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-    // Show the Navigation Bar
-            self.navigationController?.setNavigationBarHidden(false, animated: false)
-        }
-
+        // Show the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
 }
