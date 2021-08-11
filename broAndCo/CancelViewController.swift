@@ -6,13 +6,21 @@
 //
 
 import UIKit
+import SwiftConfettiView
 
 class CancelViewController: UIViewController {
+    
+    let sadFace = UIImage(named: "sadff")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationItem.setHidesBackButton(true, animated: true)
+        let confettiView = SwiftConfettiView(frame: self.view.bounds)
+        confettiView.intensity = 1
+        confettiView.type = .image(sadFace!)
+        confettiView.startConfetti()
+        self.view.addSubview(confettiView)
         emojiConstraints()
         labelConstraints()
         cancelButtonConstraints()
@@ -21,7 +29,7 @@ class CancelViewController: UIViewController {
     func emojiConstraints() {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         label.textAlignment = .center
-        label.text = "💩"
+        label.text = "😞"
         label.font = UIFont.systemFont(ofSize: 60.0)
         self.view.addSubview(label)
         

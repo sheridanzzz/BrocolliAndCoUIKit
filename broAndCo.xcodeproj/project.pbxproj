@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A1527A80ABFA484BC73A273 /* Pods_broAndCo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26959078C321F80C8CC05A8E /* Pods_broAndCo.framework */; };
+		50A0FEC726C39AE0005B9B6A /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0FEC626C39AE0005B9B6A /* InviteViewModel.swift */; };
 		CD4C9C5126C19F4700FFE2F1 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C9C5026C19F4700FFE2F1 /* InviteViewController.swift */; };
 		CD4C9C5326C1D40300FFE2F1 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C9C5226C1D40300FFE2F1 /* CongratulationsViewController.swift */; };
 		CD7365A326C271EE0028025A /* CancelInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7365A226C271EE0028025A /* CancelInviteViewController.swift */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26959078C321F80C8CC05A8E /* Pods_broAndCo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_broAndCo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A0FEC626C39AE0005B9B6A /* InviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
+		5539F20A7C38A6F04A322FF6 /* Pods-broAndCo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-broAndCo.release.xcconfig"; path = "Target Support Files/Pods-broAndCo/Pods-broAndCo.release.xcconfig"; sourceTree = "<group>"; };
+		C6AD1A1EF8AD1665ABA4AA99 /* Pods-broAndCo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-broAndCo.debug.xcconfig"; path = "Target Support Files/Pods-broAndCo/Pods-broAndCo.debug.xcconfig"; sourceTree = "<group>"; };
 		CD4C9C5026C19F4700FFE2F1 /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		CD4C9C5226C1D40300FFE2F1 /* CongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
 		CD7365A226C271EE0028025A /* CancelInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelInviteViewController.swift; sourceTree = "<group>"; };
@@ -39,17 +45,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A1527A80ABFA484BC73A273 /* Pods_broAndCo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75CC99020650DD37C4CC9785 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26959078C321F80C8CC05A8E /* Pods_broAndCo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CD760EFC26C13B6A0079B996 = {
 			isa = PBXGroup;
 			children = (
 				CD760F0726C13B6A0079B996 /* broAndCo */,
 				CD760F0626C13B6A0079B996 /* Products */,
+				FB6CF1B2F1BD6E0D0D7FB2A8 /* Pods */,
+				75CC99020650DD37C4CC9785 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				CD760F0826C13B6A0079B996 /* AppDelegate.swift */,
+				50A0FEC626C39AE0005B9B6A /* InviteViewModel.swift */,
 				CD760F0A26C13B6A0079B996 /* SceneDelegate.swift */,
 				CD760F0C26C13B6A0079B996 /* ViewController.swift */,
 				CD4C9C5026C19F4700FFE2F1 /* InviteViewController.swift */,
@@ -79,6 +97,15 @@
 			path = broAndCo;
 			sourceTree = "<group>";
 		};
+		FB6CF1B2F1BD6E0D0D7FB2A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6AD1A1EF8AD1665ABA4AA99 /* Pods-broAndCo.debug.xcconfig */,
+				5539F20A7C38A6F04A322FF6 /* Pods-broAndCo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD760F1926C13B6B0079B996 /* Build configuration list for PBXNativeTarget "broAndCo" */;
 			buildPhases = (
+				E09093684AB6182B76194F5F /* [CP] Check Pods Manifest.lock */,
 				CD760F0126C13B6A0079B996 /* Sources */,
 				CD760F0226C13B6A0079B996 /* Frameworks */,
 				CD760F0326C13B6A0079B996 /* Resources */,
+				06DAD8A5C5A337A3066BDB05 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -144,6 +173,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06DAD8A5C5A337A3066BDB05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-broAndCo/Pods-broAndCo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-broAndCo/Pods-broAndCo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-broAndCo/Pods-broAndCo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E09093684AB6182B76194F5F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-broAndCo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD760F0126C13B6A0079B996 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -152,6 +223,7 @@
 				CD760F0D26C13B6A0079B996 /* ViewController.swift in Sources */,
 				CD760F0926C13B6A0079B996 /* AppDelegate.swift in Sources */,
 				CD7365A326C271EE0028025A /* CancelInviteViewController.swift in Sources */,
+				50A0FEC726C39AE0005B9B6A /* InviteViewModel.swift in Sources */,
 				CD760F0B26C13B6A0079B996 /* SceneDelegate.swift in Sources */,
 				CD4C9C5326C1D40300FFE2F1 /* CongratulationsViewController.swift in Sources */,
 				CD7365A526C286EC0028025A /* CancelViewController.swift in Sources */,
@@ -299,11 +371,13 @@
 		};
 		CD760F1A26C13B6B0079B996 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6AD1A1EF8AD1665ABA4AA99 /* Pods-broAndCo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = broAndCo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,11 +391,13 @@
 		};
 		CD760F1B26C13B6B0079B996 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5539F20A7C38A6F04A322FF6 /* Pods-broAndCo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = broAndCo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

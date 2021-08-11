@@ -6,12 +6,22 @@
 //
 
 import UIKit
+import SwiftConfettiView
 
 class CongratulationsViewController: UIViewController {
+    
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        let confettiView = SwiftConfettiView(frame: self.view.bounds)
+        confettiView.intensity = 1
+        confettiView.type = .star
+                confettiView.startConfetti()
+        self.view.addSubview(confettiView)
+        
         emojiConstraints()
         labelConstraints()
         cancelButtonConstraints()
@@ -25,6 +35,7 @@ class CongratulationsViewController: UIViewController {
         label.text = "🥦"
         label.font = UIFont.systemFont(ofSize: 60.0)
         self.view.addSubview(label)
+        
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
