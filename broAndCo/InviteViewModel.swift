@@ -11,11 +11,12 @@ import RSFormView
 class InviteViewModel: FormViewModel {
 
   var items: [FormItem] = []
-  
+    
   init() {
     items = [NameItem(), EmailItem(),
              confirmEmailItem()]
   }
+    
   enum FieldName: String {
     case name = "NAME"
     case email = "EMAIL"

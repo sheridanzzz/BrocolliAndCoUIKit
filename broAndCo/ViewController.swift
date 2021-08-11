@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var isLoggedin: Bool =  UserDefaults.standard.bool(forKey: "myLogin")
+    
     let someImageView: UIImageView = {
         let theImageView = UIImageView()
         theImageView.image = UIImage(named: "Brocoli_and_Co.png")
@@ -24,6 +26,15 @@ class ViewController: UIViewController {
         buttonConstraints()
         nameConstraints()
         titleConstraints()
+    }
+    
+    func showCancelScreen() {
+        DispatchQueue.main.async {
+        let vc = CancelViewController()
+        vc.view.backgroundColor = .white
+            self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        }
     }
     
     @objc func buttonAction(sender: UIButton!) {

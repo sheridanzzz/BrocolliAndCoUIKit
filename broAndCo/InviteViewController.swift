@@ -10,12 +10,19 @@ import RSFormView
 
 class InviteViewController: UIViewController, FormViewDelegate{
     
+    //Email for validation: usedemail@blinq.app
+    
     //MARK: UIcomponents
     var formView = FormView()
     var submitButton = UIButton(type: .custom)
     var descriptionLabel = UILabel()
     
     var formHelper = InviteViewModel()
+    
+    var name: String = ""
+    var email: String = ""
+    var errMess: String = ""
+    var isSuccess: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +97,7 @@ class InviteViewController: UIViewController, FormViewDelegate{
         ])
     }
     
+    
     func updateSubmitButton(enabled: Bool) {
         let backgroundColor = enabled ? UIColor.dodgerBlue : UIColor.brightGray.withAlphaComponent(0.4)
         submitButton.backgroundColor = backgroundColor
@@ -102,9 +110,85 @@ class InviteViewController: UIViewController, FormViewDelegate{
     
     @objc
     func submitButtonTapped(sender: UIButton!) {
-            let vc = CongratulationsViewController()
-            vc.view.backgroundColor = .white
-            navigationController?.pushViewController(vc, animated: true)
-            self.navigationItem.setHidesBackButton(true, animated: true)
+        formHelper.fields().forEach {
+            if ($0.name == "NAME" )
+            {
+                name = $0.value
+            }
+            if ($0.name == "EMAIL" )
+            {
+                email = $0.value
+            }
         }
+        checkDetails(name: name, email: email) { (isSuccess) in
+            print("done")
+         }
+    }
+    
+    func checkDetails(name: String,  email: String, _ completion:@escaping (_ isSuccess:Bool)->Void) {
+        
+        let body: [String: Any] = ["name": name, "email": email]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: body)
+        
+        let url = URL(string: "https://us-central1-blinkapp-684c1.cloudfunctions.net/fakeAuth")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("\(String(describing: jsonData?.count))", forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
+            
+            print("-----> data: \(String(describing: data))")
+            print("-----> error: \(String(describing: error))")
+            print("status")
+            
+            if error == nil, let data = data, let response = response as? HTTPURLResponse {
+                print("Content-Type: \(response.allHeaderFields["Content-Type"] ?? "")")
+                print("statusCode: \(response.statusCode)")
+                print(String(data: data, encoding: .utf8) ?? "")
+                
+                let ses = String(data: data, encoding: .utf8) ?? ""
+                let jsonData = ses.data(using: .utf8)
+                if response.statusCode == 400 {
+                    let response1: Response = try! JSONDecoder().decode(Response.self, from: jsonData ?? data)
+                    DispatchQueue.main.async {
+                        errMess = response1.errorMessage
+                        completion(false)
+                        isSuccess = false
+                        let alert = UIAlertController(title: "Error Message", message: errMess, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                        isSuccess = true
+                        let vc = CongratulationsViewController()
+                        vc.view.backgroundColor = .white
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        self.navigationItem.setHidesBackButton(true, animated: true)
+                        print("next view")
+                    }
+                }
+            }
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            print("-----1> responseJSON: \(String(describing: responseJSON))")
+            
+            if let responseJSON = responseJSON as? [String: Any] {
+                print("-----2> responseJSON: \(responseJSON)")
+            }
+        }
+        task.resume()
+    }
+    
+    struct Response: Decodable {
+        let errorMessage: String
+    }
 }

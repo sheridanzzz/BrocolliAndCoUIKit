@@ -10,9 +10,8 @@ import SwiftConfettiView
 
 class CongratulationsViewController: UIViewController {
     
-    
-   
-    
+    var isLogggedin = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -22,6 +21,8 @@ class CongratulationsViewController: UIViewController {
                 confettiView.startConfetti()
         self.view.addSubview(confettiView)
         
+        UserDefaults.standard.set(isLogggedin, forKey: "myLogin")
+        
         emojiConstraints()
         labelConstraints()
         cancelButtonConstraints()
@@ -30,7 +31,6 @@ class CongratulationsViewController: UIViewController {
     
     func emojiConstraints() {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        //label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
         label.text = "🥦"
         label.font = UIFont.systemFont(ofSize: 60.0)
